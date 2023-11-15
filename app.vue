@@ -4,8 +4,8 @@
     <div class="main">
       <div class="header-container">
         <div class="header">
-          <HeaderItem :title="'Tasks'" :number="taskStore.tasks.length" />
-          <HeaderItem :title="'Tasks Done'" :number="doneTasks" />
+          <HeaderItem :title="'Tasks'" :number="taskStore.tasks.length" @click="filterTasks" />
+          <HeaderItem :title="'Tasks Done'" :number="doneTasks" @click="filterDoneTasks" />
           <div v-if="checkForDoneTask">
             <el-button type="danger" :icon="Delete" class="item-delete" size="small" @click="deleteDoneTasks">Tasks
               Done</el-button>
@@ -15,11 +15,10 @@
       </div>
       <div class="tasks">
         <div v-if="dataLoaded">
-          <transition-group tag="div" name="fade" appear mode="out-in"
-            style="display: flex; flex-direction: column; gap: .75rem;">
+          <transition-group tag="div" name="fade" appear mode="out-in">
             <div v-for="task in taskStore.tasks" :key="task.id">
               <TaskItem :text="task.text" :isDone="task.status.done" :taskId="task.id" @toggle-status="toggleTaskStatus"
-                @delete-task="deleteTask" />
+                v-if="filterItem(task)" @delete-task="deleteTask" />
             </div>
           </transition-group>
         </div>
@@ -56,6 +55,24 @@ import TaskItem from './components/task.vue'
 import InfoView from './components/info.vue'
 
 const taskStore = useTaskStore()
+const filterCriteria = ref('tasks')
+
+const filterItem = (task) => {
+  if (filterCriteria.value === 'done') {
+    if (task.status.done) {
+      return true
+    }
+  } else {
+    return true
+  }
+}
+const filterDoneTasks = () => {
+  filterCriteria.value = 'done'
+}
+
+const filterTasks = () => {
+  filterCriteria.value = 'tasks'
+}
 
 const dataFetching = ref(true)
 

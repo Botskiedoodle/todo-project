@@ -31,6 +31,7 @@ const props = defineProps({
 
   &:hover {
     background-color: #1F4F7D;
+    cursor: pointer;
   }
 
   .task-title {

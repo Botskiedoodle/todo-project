@@ -87,6 +87,7 @@ const hovering = ref(false)
   padding: 1rem;
   transition: all 0.3s ease;
   user-select: none;
+  margin-bottom: .75rem;
 
   .task-button-text-group {
     display: flex;
@@ -123,7 +124,8 @@ const hovering = ref(false)
   .delete {
     visibility: hidden;
     color: red;
-
+    margin-top: auto;
+    margin-bottom: auto;
 
     &:hover {
       cursor: pointer;
