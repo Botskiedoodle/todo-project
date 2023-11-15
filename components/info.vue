@@ -28,7 +28,6 @@ const isInfoVisible = ref(true)
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .5s ease;
-
 }
 
 .fade-enter-from,
@@ -61,7 +60,6 @@ const isInfoVisible = ref(true)
 }
 
 .info-positioning {
-
   display: flex;
   justify-content: flex-end;
   position: absolute;
@@ -90,15 +88,12 @@ const isInfoVisible = ref(true)
       height: 1.125rem;
       transition: all .3s ease;
 
-
       &:hover {
         background-color: white;
         color: black;
         cursor: pointer;
       }
     }
-
-
   }
 }
 </style>

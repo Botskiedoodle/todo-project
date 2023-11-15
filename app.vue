@@ -6,10 +6,13 @@
         <div class="header">
           <HeaderItem :title="'Tasks'" :number="taskStore.tasks.length" @click="filterTasks" />
           <HeaderItem :title="'Tasks Done'" :number="doneTasks" @click="filterDoneTasks" />
-          <div v-if="checkForDoneTask">
-            <el-button type="danger" :icon="Delete" class="item-delete" size="small" @click="deleteDoneTasks">Tasks
-              Done</el-button>
-          </div>
+
+          <transition name="fade">
+            <div v-if="checkForDoneTask">
+              <el-button type="danger" :icon="Delete" class="item-delete" size="small" @click="deleteDoneTasks">Tasks
+                Done</el-button>
+            </div>
+          </transition>
           <el-button type="danger" :icon="Delete" class="item-delete" size="small" @click="deleteAll">Tasks</el-button>
         </div>
       </div>
