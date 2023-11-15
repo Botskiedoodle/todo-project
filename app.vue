@@ -1,21 +1,14 @@
 <template>
   <div class="app">
-
-
     <div class="title">Vue ToDo List</div>
-
     <div class="main">
-
       <div class="header-container">
         <div class="header">
-
           <HeaderItem :title="'Tasks'" :number="taskStore.tasks.length" />
           <HeaderItem :title="'Tasks Done'" :number="doneTasks" />
           <div v-if="checkForDoneTask">
-
             <el-button type="danger" :icon="Delete" class="item-delete" size="small" @click="deleteDoneTasks">Tasks
               Done</el-button>
-
           </div>
           <el-button type="danger" :icon="Delete" class="item-delete" size="small" @click="deleteAll">Tasks</el-button>
         </div>
@@ -30,7 +23,6 @@
             </div>
           </transition-group>
         </div>
-
         <div v-if="dataFetching === true" class="loading">
           <img src="./assets/loading.svg" alt="loading">
         </div>
@@ -49,9 +41,7 @@
         </div>
       </div>
     </div>
-
     <InfoView />
-
   </div>
 </template>
 <script setup>
@@ -176,8 +166,6 @@ const addTask = () => {
   }
 }
 
-
-
 </script>
 <style>
 body {
@@ -231,6 +219,7 @@ body {
     border: 2px solid #3679BA;
     transition: border-color 0.3s ease;
     color: #3679BA;
+    font-weight: 600;
 
     &:focus {
       border: 2px solid #3679BA;
@@ -255,7 +244,7 @@ body {
 
     &:hover {
       cursor: pointer;
-      background-color: #2890c7;
+      background-color: #1F4F7D;
     }
   }
 }

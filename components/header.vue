@@ -30,7 +30,7 @@ const props = defineProps({
   font-weight: 600;
 
   &:hover {
-    background-color: #2890c7;
+    background-color: #1F4F7D;
   }
 
   .task-title {

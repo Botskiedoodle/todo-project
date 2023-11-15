@@ -1,12 +1,14 @@
 <template>
   <div @mouseover="hovering = true" @mouseleave="hovering = false" class="task" :class="isDone ? 'task-done' : 'task'">
-    <div class="button-base" :class="isDone ? 'button-done' : 'button'" @click="toggle(taskId)">
-      <el-icon>
-        <Check />
-      </el-icon>
-    </div>
-    <div>
-      {{ text }}
+    <div class="task-button-text-group">
+      <div class="button-base" :class="isDone ? 'button-done' : 'button'" @click="toggle(taskId)">
+        <el-icon>
+          <Check />
+        </el-icon>
+      </div>
+      <div style="width: 20rem; word-wrap: break-word;">
+        {{ text }}
+      </div>
     </div>
     <el-icon :class="{ 'visible': hovering }" class="delete" size="large" @click="deleteTask(taskId)">
       <Delete />
@@ -75,9 +77,10 @@ const hovering = ref(false)
 }
 
 .task {
+
   display: flex;
-  align-items: center;
-  justify-items: center;
+  align-items: flex;
+  justify-content: space-between;
   gap: 1rem;
   border: 1px #babfc5 solid;
   border-radius: 6px;
@@ -85,7 +88,11 @@ const hovering = ref(false)
   transition: all 0.3s ease;
   user-select: none;
 
-
+  .task-button-text-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem
+  }
 
   .button-base {
     display: grid;
@@ -102,8 +109,6 @@ const hovering = ref(false)
     color: white;
     background-color: green;
 
-
-
     &:hover {
       cursor: pointer;
       background-color: rgb(6, 71, 6);
@@ -118,8 +123,6 @@ const hovering = ref(false)
   .delete {
     visibility: hidden;
     color: red;
-    margin-left: auto;
-
 
 
     &:hover {
