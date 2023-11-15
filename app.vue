@@ -20,8 +20,12 @@
         <div v-if="dataLoaded">
           <transition-group tag="div" name="fade" appear mode="out-in">
             <div v-for="task in taskStore.tasks" :key="task.id">
-              <TaskItem :text="task.text" :isDone="task.status.done" :taskId="task.id" @toggle-status="toggleTaskStatus"
-                v-if="filterItem(task)" @delete-task="deleteTask" />
+              <transition-group tag="div" name="fade" appear mode="out-in">
+                <div v-if="filterItem(task)">
+                  <TaskItem :text="task.text" :isDone="task.status.done" :taskId="task.id"
+                    @toggle-status="toggleTaskStatus" @delete-task="deleteTask" />
+                </div>
+              </transition-group>
             </div>
           </transition-group>
         </div>
