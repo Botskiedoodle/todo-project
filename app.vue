@@ -96,10 +96,10 @@ const retrieveData = () => {
   const getFromLocalStorage = localStorage.getItem('tasks')
   if (getFromLocalStorage) {
     taskStore.tasks = JSON.parse(getFromLocalStorage);
-    dataFetching.value = false
   } else {
     taskStore.tasks = [];
-  }
+  }    
+  dataFetching.value = false
 }
 const storeData = () => {
   const storeToLocalStorage = JSON.stringify(taskStore.tasks)
